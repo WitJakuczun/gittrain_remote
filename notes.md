@@ -5,43 +5,44 @@ This a notebook for git training
 
 - [Git notes](#git-notes)
     - [Undoing things](#undoing-things)
+        - [Unstage a file](#unstage-a-file)
+        - [Remove a file from the staging area -- it will be **deleted**](#remove-a-file-from-the-staging-area----it-will-be-deleted)
+        - [Reverting local changes](#reverting-local-changes)
 
 <!-- markdown-toc end -->
 
 ## Undoing things ##
 
-### Unstaing a staged file ###
+### Unstage a file ##
+`bash
+git reset HEAD ala.txt
+git commit -m "the file 'ala.txt' is still in the repository"
+`
 
-Create `ala.txt` file. And stage it
+### Remove a file from the staging area -- it will be **deleted** ##
 
-```bash
-touch ala.txt
-git add ala.txt
-```
-Check that `ala.txt` is in the staging area:
-
-```bash
-git status
-```
-The output below says that `ala.txt` is a `new file`.
-```
-On branch master
-
-No commits yet
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-
-        new file:   ala.txt
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-        .#notes.md
-        notes.md
-```
-To remove it from a staged area issue commands
-
-```bash
+`bash
 git rm --cached ala.txt
-```
+git commit -m "the file 'ala.txt' is gone from the repository"
+`
+
+### Reverting local changes ##
+
+` bash
+git checkout -- ala.txt
+`
+## Remote repos ##
+
+> You can have more than one remote repo.
+
+### Add remote ###
+
+`bash
+git remote add github https://github.com/WitJakuczun/gittrain_remote.git
+`
+
+### List all remotes  ###
+
+`bash
+git remote -v
+`
